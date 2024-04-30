@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+message PdfResponse {
+  string msg = 1;
+  MetaData metaData = 2;
+}
+
+message MetaData {
+  string title = 1;
+  string type = 2;
+}
+
+message FileResponse {
+  string id = 1;
+  string name = 2;
+  int64 size = 3;
+  string url = 4;
+}
+
+message FileResponseList {
+  repeated FileResponse files = 1;
+}
+
+message UploadPdfRequest {
+  string file = 1;
+  string contentType = 2;
+  string name = 3;
+}
+
+message GetFilesRequest {
+  string bucketName = 1;
+}
+
+
+service PdfService {
+  rpc uploadPdf(UploadPdfRequest) returns (PdfResponse) {}
+  rpc getFilesFromBucket(GetFilesRequest) returns (FileResponseList) {}
+}

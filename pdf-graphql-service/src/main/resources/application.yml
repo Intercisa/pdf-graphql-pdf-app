@@ -1,0 +1,4 @@
+graphql:
+  packages: "com.bsipiczki.pdfservice"
+server:
+  port: 8081
